@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "798983942527",
+    "firebase_url": "https://project-pants-1506223136968.firebaseio.com",
+    "project_id": "project-pants-1506223136968",
+    "storage_bucket": "project-pants-1506223136968.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:798983942527:android:43cf01822582c1b9",
+        "android_client_info": {
+          "package_name": "com.mec.pants"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "798983942527-buvebug5cv6lbjn3sb9ncpic04j8qmmt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mec.pants",
+            "certificate_hash": "88a58f00693c1bc0ae40d413457a522143253648"
+          }
+        },
+        {
+          "client_id": "798983942527-egq4pc6146h57vjhlq595u57i6qp78kf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2SB5BzxeYF2YYyPrN-Weiy34n_QDN4hI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "798983942527-egq4pc6146h57vjhlq595u57i6qp78kf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

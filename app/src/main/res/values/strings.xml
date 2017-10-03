@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PANTS</string>
+    <string name="title_activity_inbox">InboxActivity</string>
 </resources>
