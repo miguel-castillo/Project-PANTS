@@ -14,11 +14,11 @@
     android:weightSum="1">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageView9"
         android:layout_width="match_parent"
-        android:layout_height="158dp"
-        app:srcCompat="@drawable/logo1"
-        android:layout_weight="0.55" />
+        android:layout_height="340dp"
+        android:layout_weight="0.36"
+        app:srcCompat="@drawable/logofinal" />
 
     <EditText
         android:id="@+id/email"
@@ -43,7 +43,6 @@
 
         <Button
             android:id="@+id/login"
-
             style="@style/buttonText_style"
             android:layout_width="140dp"
             android:layout_height="match_parent"

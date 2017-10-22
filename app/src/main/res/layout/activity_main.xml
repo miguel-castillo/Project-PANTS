@@ -7,20 +7,25 @@
     tools:context="com.mec.pants.MainActivity"
     android:weightSum="1">
 
-    <TextView
+    <ImageButton
+        android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="0.45"
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
 
-    <Button
-        android:layout_width="match_parent"
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Inbox"
-        android:id="@+id/inboxButton"
-        />
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        android:layout_weight="0.35" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="97dp"
+        android:layout_height="52dp"
+        app:srcCompat="@android:drawable/stat_notify_chat"
+        android:layout_weight="0.19" />
 
 </LinearLayout>

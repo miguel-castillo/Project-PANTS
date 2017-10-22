@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/messageText"
         android:text="Enter text here:"
-        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteY="518dp"
         tools:layout_editor_absoluteX="8dp" />
 
 </android.support.constraint.ConstraintLayout>
