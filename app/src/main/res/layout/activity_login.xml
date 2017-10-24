@@ -22,17 +22,19 @@
 
     <EditText
         android:id="@+id/email"
+        android:drawableLeft="@drawable/loginbuts" android:paddingLeft="15dp"
         style="@style/editText_style"
         android:layout_width="300dp"
-        android:hint="Email"
+        android:hint="Email" android:paddingRight="50dp" android:textColor="#ffffff"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/password"
+        android:drawableLeft="@drawable/passwordbuts" android:paddingLeft="15dp"
         style="@style/editText_style"
         android:layout_width="300dp"
-        android:hint="Password"
-        android:inputType="textPassword" />
+        android:hint="Password" android:paddingRight="50dp" android:textColor="#ffffff"
+        android:inputType="textPassword"/>
 
     <LinearLayout
         android:layout_width="match_parent"
