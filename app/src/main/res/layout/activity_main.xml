@@ -7,6 +7,13 @@
     tools:context="com.mec.pants.MainActivity"
     android:weightSum="1">
 
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:srcCompat="@android:drawable/ic_menu_manage" />
+
     <Button
         android:id="@+id/inboxButton"
         android:layout_width="wrap_content"
