@@ -2,20 +2,12 @@ package com.mec.pants;
 
 import android.content.Intent;
 import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Button;
 import android.os.Bundle;
 import android.net.Uri;
-
-
-/**
- * Created by calvinhan on 10/24/17.
- */
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -31,7 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         imageView = (ImageView) findViewById(R.id.imageView);
-        button = (Button) findViewById(R.id.button);
+        button = (Button) findViewById(R.id.button2);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
