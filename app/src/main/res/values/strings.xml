@@ -1,4 +1,11 @@
-<resources>
-    <string name="app_name">PANTS</string>
-    <string name="title_activity_inbox">InboxActivity</string>
+<resources>     <string name="app_name">PANTS</string> 
+    <string name="title_activity_inbox">InboxActivity</string>  
+    <string-array name="names"> 
+        <item>Male</item> 
+        <item>Female</item> 
+    </string-array>
+           <string name="title_activity_profilepage">profilepage</string> 
+    <string name="title_home">Home</string> 
+    <string name="title_dashboard">Dashboard</string> 
+    <string name="title_notifications">Notifications</string> 
 </resources>

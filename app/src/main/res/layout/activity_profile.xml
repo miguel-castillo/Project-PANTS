@@ -1,65 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:layout_marginTop="-100dp"
-    android:layout_marginLeft="30dp"
-    android:layout_marginRight="30dp"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView"
-        style="@style/buttonText_style"
-        android:background="@null"
-        app:srcCompat="@drawable/profilepic"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/button2"
-        style="@style/buttonText_style"
-        android:layout_width="144dp"
-        android:layout_height="28dp"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="Upload Image" />
-
-
-    <EditText
-        android:id="@+id/editText3"
-        android:paddingTop="30dp"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="About me..." />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/editText4"
-        android:paddingTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Education" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll">
 
-    <EditText
-        android:id="@+id/editText5"
-        android:paddingTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Interested in..." />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/waterfall"/>
 
-    <Button
-        android:id="@+id/button3"
-        style="@style/buttonText_style"
-        android:padding
-        android:layout_width="213dp"
-        android:layout_height="36dp"
-        android:text="Finish" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:weightSum="1">
 
-</LinearLayout>
+                <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/circle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/profileicon1"
+                app:civ_border_width="4dp"
+                app:civ_border_color="#FFFFFF"/>
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    style="@style/buttonText_style"
+                    android:text="Upload Image"
+                    android:textSize="10dp"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="128dp"
+                    android:layout_height="20dp"
+                    style="@style/buttonText_style"
+                    android:text="Upload Background"
+                    android:textSize="10dp"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_weight="0.14" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="272dp"
+            android:background="#f0f0f0"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/editText10"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="About me"/>
+
+            <EditText
+                android:id="@+id/editText9"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Education"/>
+            <EditText
+                android:id="@+id/editText8"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Likes/Dislikes"/>
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:rowCount="2">
+
+                <TextView
+                    android:text=""
+                    android:textColor="#000000"/>
+            </GridLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="196dp"
+                    android:layout_height="40dp"
+                    android:paddingLeft="20dp"
+                    android:text="Interested in:"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    />
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="125dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.23">
+
+                </Spinner>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+</android.support.design.widget.CoordinatorLayout>
