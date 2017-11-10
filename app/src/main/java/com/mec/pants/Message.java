@@ -3,7 +3,7 @@ package com.mec.pants;
 public class Message {
 
     private String content;
-    //private String username, date;
+    private String username, date;
 
     public Message() {
     }
@@ -30,7 +30,7 @@ public class Message {
 
     public void setDate(String date) {
         this.date = date;
-    }
+    }*/
 
     public String getUsername() {
         return username;
@@ -38,7 +38,7 @@ public class Message {
 
     public void setUsername(String username) {
         this.username = username;
-    }*/
+    }
 
     public String getContent() {
         return content;
