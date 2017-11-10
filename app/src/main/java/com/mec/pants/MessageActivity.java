@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -28,7 +28,6 @@ public class MessageActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private RecyclerView mMessageList;
     private FirebaseAuth mAuth;
-    //private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseUser mCurrentUser;
     private DatabaseReference mDatabaseUsers;
 
@@ -88,6 +87,7 @@ public class MessageActivity extends AppCompatActivity {
             protected void populateViewHolder(MessageViewHolder viewHolder, Message model, int position) {
                 viewHolder.setContent(model.getContent());
                 viewHolder.setUsername(model.getUsername());
+                viewHolder.setTime(model.getTime());
             }
         };
         mMessageList.setAdapter(FBRA);
@@ -110,6 +110,11 @@ public class MessageActivity extends AppCompatActivity {
         public void setUsername(String username) {
             TextView username_content = (TextView) mView.findViewById(R.id.usernameText);
             username_content.setText(username);
+        }
+
+        public void setTime(long time) {
+            TextView time_content = (TextView) mView.findViewById(R.id.timeText);
+            time_content.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",time));
         }
 
     }

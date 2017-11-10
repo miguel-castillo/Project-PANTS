@@ -1,9 +1,12 @@
 package com.mec.pants;
 
+import java.util.Date;
+
 public class Message {
 
     private String content;
-    private String username, date;
+    private String username;
+    private long time;
 
     public Message() {
     }
@@ -12,25 +15,20 @@ public class Message {
         this.content = content;
     }
 
-   /* public Message(String content, String username) {
+    public Message(String content, String username) {
         this.content = content;
         this.username = username;
+
+        time = new Date().getTime();
     }
 
-    public Message(String content, String username, String date) {
-        this.content = content;
-        this.username = username;
-        this.date = date;
-
-    }*/
-
-    /*public String getDate() {
-        return date;
+    public long getTime() {
+        return time;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }*/
+    public void setTime(long time) {
+        this.time = time;
+    }
 
     public String getUsername() {
         return username;
