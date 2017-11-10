@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:layout_marginTop="-100dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageView"
+        style="@style/buttonText_style"
+        android:background="@null"
+        app:srcCompat="@drawable/profilepic"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/buttonText_style"
+        android:layout_width="144dp"
+        android:layout_height="28dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="Upload Image" />
+
+
+    <EditText
+        android:id="@+id/editText3"
+        android:paddingTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="About me..." />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:paddingTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Education" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:paddingTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Interested in..." />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/buttonText_style"
+        android:layout_width="213dp"
+        android:layout_height="36dp"
+        android:text="Finish" />
+
+</LinearLayout>

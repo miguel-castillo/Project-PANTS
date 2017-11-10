@@ -4,36 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg"
     tools:context="com.mec.pants.LoginActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:layout_weight="0.36"
+        app:srcCompat="@drawable/logofinal" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/email"
-        android:hint="Email"
-        />
+        android:drawableLeft="@drawable/loginbuts" android:paddingLeft="15dp"
+        style="@style/editText_style"
+        android:layout_width="300dp"
+        android:hint="Email" android:paddingRight="50dp" android:textColor="#ffffff"
+        android:inputType="textEmailAddress" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/password"
-        android:hint="Password"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/login"
-        />
-    
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/register"
-        />
+        android:drawableLeft="@drawable/passwordbuts" android:paddingLeft="15dp"
+        style="@style/editText_style"
+        android:layout_width="300dp"
+        android:hint="Password" android:paddingRight="50dp" android:textColor="#ffffff"
+        android:inputType="textPassword"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/login"
+            style="@style/buttonText_style"
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.41"
+            android:text="Login" />
+
+        <Button
+            android:id="@+id/register"
+            style="@style/buttonText_style"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.23"
+            android:text="Register" />
+        </LinearLayout>
 
 
 </LinearLayout>
