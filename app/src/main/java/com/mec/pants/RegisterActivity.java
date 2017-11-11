@@ -14,11 +14,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mName, mEmail, mPassword;
     private Button mRegister;
+    private DatabaseReference mDatabase;
 
     FirebaseAuth mAuth;
     FirebaseAuth.AuthStateListener firebaseAuthListener;
@@ -29,12 +32,13 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         firebaseAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
                 if(user != null){
-                    Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                     return;
@@ -57,7 +61,12 @@ public class RegisterActivity extends AppCompatActivity {
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(!task.isSuccessful()){
+                        if(task.isSuccessful()){
+                            String userID = mAuth.getCurrentUser().getUid();
+                            DatabaseReference currentUserDB = mDatabase.child(userID);
+                            currentUserDB.child("Name").setValue(name);
+                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        } else {
                             Toast.makeText(RegisterActivity.this, "Sign up error.", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -67,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    @Override
+   /* @Override
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(firebaseAuthListener);
@@ -77,5 +86,5 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mAuth.removeAuthStateListener(firebaseAuthListener);
-    }
+    }*/
 }

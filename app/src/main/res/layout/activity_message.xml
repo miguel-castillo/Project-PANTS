@@ -6,32 +6,40 @@
     android:layout_height="match_parent"
     tools:context="com.mec.pants.MessageActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <Button
+        android:id="@+id/sendMessageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:text="Send"
+        tools:ignore="RtlCompat" />
+
+    <EditText
+        android:id="@+id/inputMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/sendMessageButton"
+        android:layout_toStartOf="@+id/sendMessageButton"
+        android:ems="10"
+        android:hint="Please type your message here"
+        android:inputType="textMultiLine"
+        tools:ignore="RtlCompat" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/messageRec"
-        android:layout_above="@+id/linearLayout">
+        android:layout_above="@+id/inputMessage"
+        android:layout_alignParentStart="true"
+        tools:ignore="RtlCompat">
 
-
-    </android.support.v7.widget.RecyclerView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom = "true"
-        android:id="@+id/linearLayout">
-
-        <EditText
-            android:layout_width="300dp"
+        <TextView
+            android:id="@+id/displayMessage"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editMessage"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="send"
-            android:onClick="sendButtonClicked"
-            />
-    </LinearLayout>
+            android:layout_marginTop="10dp" />
+    </ScrollView>
 
 </RelativeLayout>

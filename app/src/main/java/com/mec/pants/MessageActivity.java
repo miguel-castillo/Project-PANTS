@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,107 +17,100 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class MessageActivity extends AppCompatActivity {
 
-    private EditText mMessage;
-    private DatabaseReference mDatabase;
-    private RecyclerView mMessageList;
-    private FirebaseAuth mAuth;
-    private FirebaseUser mCurrentUser;
-    private DatabaseReference mDatabaseUsers;
+    private Button mSendMessage;
+    private TextView mDisplayMessage;
+    private EditText mInputMessage;
+    private String roomName, username;
+    private DatabaseReference room;
+    String tempKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
 
-        mMessage = (EditText) findViewById(R.id.editMessage);
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Messages");
-        mMessageList = (RecyclerView) findViewById(R.id.messageRec);
-        mMessageList.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setStackFromEnd(true);
-        mMessageList.setLayoutManager(linearLayoutManager);
-        mAuth = FirebaseAuth.getInstance();
-    }
+        mSendMessage = (Button) findViewById(R.id.sendMessageButton);
+        mDisplayMessage = (TextView) findViewById(R.id.displayMessage);
+        mInputMessage = (EditText) findViewById(R.id.inputMessage);
 
-    public void sendButtonClicked(View view) {
-        mCurrentUser = mAuth.getCurrentUser();
-        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("users").child(mCurrentUser.getUid());
-        final String messageValue = mMessage.getText().toString().trim();
-        if(!TextUtils.isEmpty(messageValue)) {
-            final DatabaseReference newPost = mDatabase.push();
-            mDatabaseUsers.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    newPost.child("content").setValue(messageValue);
-                    newPost.child("username").setValue(dataSnapshot.child("name").getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+        roomName = getIntent().getExtras().get("chatroomName").toString();
+        username = getIntent().getExtras().get("username").toString();
+        setTitle("Room - " + roomName);
 
-                        }
-                    });
-                    mMessageList.scrollToPosition(mMessageList.getAdapter().getItemCount());
-                }
+        room = FirebaseDatabase.getInstance().getReference().child("Conversations").child(roomName);
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseRecyclerAdapter<Message,MessageViewHolder> FBRA = new FirebaseRecyclerAdapter<Message, MessageViewHolder>(
-
-                Message.class,
-                R.layout.singlemessagelayout,
-                MessageViewHolder.class,
-                mDatabase
-        ) {
+        mSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected void populateViewHolder(MessageViewHolder viewHolder, Message model, int position) {
-                viewHolder.setContent(model.getContent());
-                viewHolder.setUsername(model.getUsername());
-                viewHolder.setTime(model.getTime());
+            public void onClick(View view) {
+                Map<String, Object> uniqueKeyMap = new HashMap<String, Object>();
+                tempKey = room.push().getKey();
+                room.updateChildren(uniqueKeyMap);
+
+                DatabaseReference userRef = room.child(tempKey);
+                Map<String, Object> userMessageMap = new HashMap<String, Object>();
+                userMessageMap.put("name", username);
+                userMessageMap.put("message", mInputMessage.getText().toString());
+
+                userRef.updateChildren(userMessageMap);
+
+                mInputMessage.setText("");
+                mInputMessage.requestFocus();
+
             }
-        };
-        mMessageList.setAdapter(FBRA);
+        });
+
+        room.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                appendChatConversation(dataSnapshot);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                appendChatConversation(dataSnapshot);
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
-    public static class MessageViewHolder extends RecyclerView.ViewHolder {
+    String chatMessage, chatUsername;
 
-        View mView;
+    private void appendChatConversation(DataSnapshot dataSnapshot) {
+        Iterator i = dataSnapshot.getChildren().iterator();
 
-        public MessageViewHolder(View itemView) {
-            super(itemView);
-            mView = itemView;
+        while (i.hasNext()){
+            chatMessage = (String) ((DataSnapshot) i.next()).getValue();
+            chatUsername = (String) ((DataSnapshot) i.next()).getValue();
+
+            mDisplayMessage.append(chatUsername + " : " + chatMessage + "\n \n");
         }
-
-        public void setContent(String content) {
-            TextView message_content = (TextView) mView.findViewById(R.id.messageText);
-            message_content.setText(content);
-        }
-
-        public void setUsername(String username) {
-            TextView username_content = (TextView) mView.findViewById(R.id.usernameText);
-            username_content.setText(username);
-        }
-
-        public void setTime(long time) {
-            TextView time_content = (TextView) mView.findViewById(R.id.timeText);
-            time_content.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)",time));
-        }
-
     }
-
 }
