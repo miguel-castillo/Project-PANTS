@@ -29,9 +29,9 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText mRoomName;
-    private TextView mTextView;
     private ListView mChatRoomListView;
+    private Button mViewUserButton;
+    private TextView textView;
 
     private ArrayAdapter<String> arrayAdapter;
     private ArrayList<String> listOfRooms = new ArrayList<String>();
@@ -45,7 +45,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mChatRoomListView = (ListView) findViewById(R.id.addRoomsListView);
-        mTextView = (TextView) findViewById(R.id.text);
+        mViewUserButton = (Button) findViewById(R.id.viewUsersButton);
+        textView = (TextView) findViewById(R.id.text);
+
+        mViewUserButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ViewUsersActivity.class));
+                finish();
+                return;
+            }
+        });
 
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfRooms);
         mChatRoomListView.setAdapter(arrayAdapter);
@@ -58,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 name = dataSnapshot.child("Name").getValue().toString();
+                textView.setText(dataSnapshot.child("Location").getValue().toString());
             }
 
             @Override
@@ -65,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
         DatabaseReference mReference = mDatabase.getReference().child("Conversations");
@@ -87,27 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-                /*.child(mRoomName.getText().toString());
-        mReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Set<String> set = new HashSet<String>();
-                Iterator i = dataSnapshot.getChildren().iterator();
-                while (i.hasNext()) {
-                    set.add(((DataSnapshot)i.next()).getKey());
-                }
-
-                listOfRooms.clear();
-                listOfRooms.addAll(set);
-                arrayAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
 
         mChatRoomListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
