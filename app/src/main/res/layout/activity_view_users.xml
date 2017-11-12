@@ -16,12 +16,4 @@
         android:layout_marginBottom="43dp"
         tools:ignore="RtlCompat" />
 
-    <TextView
-        android:id="@+id/testView"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:hint="Example" />
-
-
 </RelativeLayout>

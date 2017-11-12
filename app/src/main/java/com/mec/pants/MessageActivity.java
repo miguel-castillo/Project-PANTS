@@ -50,7 +50,9 @@ public class MessageActivity extends AppCompatActivity {
         username = getIntent().getExtras().get("username").toString();
         setTitle("Room - " + roomName);
 
-        room = FirebaseDatabase.getInstance().getReference().child("Conversations").child(roomName);
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        room = FirebaseDatabase.getInstance().getReference().child("Users").child(userID).child("Conversations").child(roomName);
 
         mSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override

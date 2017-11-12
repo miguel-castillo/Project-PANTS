@@ -25,12 +25,14 @@ import java.util.Set;
 
 public class ViewUsersActivity extends AppCompatActivity {
 
-    ListView mListView;
-    TextView mTextView;
+    private ListView mListView;
 
-    List<User> listofUsers;
+    private List<User> listofUsers;
 
-    DatabaseReference users;
+    private FirebaseAuth mAuth;
+    private DatabaseReference users;
+
+    private String userUsername;
 
 
     @Override
@@ -39,9 +41,36 @@ public class ViewUsersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_users);
 
         mListView = (ListView) findViewById(R.id.usersListView);
-        mTextView = (TextView) findViewById(R.id.testView);
         listofUsers = new ArrayList<>();
         users = FirebaseDatabase.getInstance().getReference().child("Users");
+        mAuth = FirebaseAuth.getInstance();
+
+        String userId = mAuth.getCurrentUser().getUid();
+        users.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                userUsername = dataSnapshot.child("Name").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                DatabaseReference mRef = users.child("Conversations").child(((TextView) view).getText().toString());
+                mRef.setValue("");
+
+                Intent messagesIntent = new Intent(ViewUsersActivity.this, MessageActivity.class);
+                messagesIntent.putExtra("username", userUsername);
+                messagesIntent.putExtra("chatroomName", ((TextView) view).getText().toString());
+                startActivity(messagesIntent);
+            }
+        });
 
     }
 
@@ -71,7 +100,6 @@ public class ViewUsersActivity extends AppCompatActivity {
                     }
 
                     User user = new User(userID.getKey(), username, location);
-                    //mTextView.setText(test);
                     listofUsers.add(user);
                 }
                 UserList adapter = new UserList(ViewUsersActivity.this, listofUsers);
