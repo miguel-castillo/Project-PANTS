@@ -1,11 +1,15 @@
 package com.mec.pants;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,6 +30,7 @@ import java.util.Set;
 public class ViewUsersActivity extends AppCompatActivity {
 
     private ListView mListView;
+    private TextView test;
 
     private List<User> listofUsers;
 
@@ -41,6 +46,7 @@ public class ViewUsersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_users);
 
         mListView = (ListView) findViewById(R.id.usersListView);
+        test = (TextView) findViewById(R.id.sample);
         listofUsers = new ArrayList<>();
         users = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
@@ -55,20 +61,6 @@ public class ViewUsersActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                DatabaseReference mRef = users.child("Conversations").child(((TextView) view).getText().toString());
-                mRef.setValue("");
-
-                Intent messagesIntent = new Intent(ViewUsersActivity.this, MessageActivity.class);
-                messagesIntent.putExtra("username", userUsername);
-                messagesIntent.putExtra("chatroomName", ((TextView) view).getText().toString());
-                startActivity(messagesIntent);
             }
         });
 

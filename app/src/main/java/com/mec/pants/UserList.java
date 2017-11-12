@@ -33,12 +33,12 @@ public class UserList extends ArrayAdapter {
         View listViewItem = inflater.inflate(R.layout.profiletemplate,null,true);
 
         TextView name = (TextView) listViewItem.findViewById(R.id.usernameText);
-        TextView location = (TextView) listViewItem.findViewById(R.id.locationText);
+        //TextView location = (TextView) listViewItem.findViewById(R.id.locationText);
 
         User user = userList.get(position);
 
         name.setText(user.getUsername());
-        location.setText(user.getLocation());
+        //location.setText(user.getLocation());
 
         return listViewItem;
 

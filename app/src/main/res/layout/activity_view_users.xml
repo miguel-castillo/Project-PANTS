@@ -16,4 +16,14 @@
         android:layout_marginBottom="43dp"
         tools:ignore="RtlCompat" />
 
+    <TextView
+        android:id="@+id/sample"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:hint="sample Text"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
 </RelativeLayout>
