@@ -1,5 +1,6 @@
 package com.mec.pants;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +9,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +27,11 @@ public class EditUserActivity extends AppCompatActivity {
     private Button mSave;
 
     private FirebaseAuth mAuth;
-    private DatabaseReference mref;
+    private DatabaseReference mUserRef;
+
+    private String username;
+    private String email;
+    private String phoneNumber;
 
     String userID;
 
@@ -39,26 +47,34 @@ public class EditUserActivity extends AppCompatActivity {
         mSave = (Button) findViewById(R.id.saveButton);
 
         mAuth = FirebaseAuth.getInstance();
-        mref = FirebaseDatabase.getInstance().getReference();
+        mUserRef = FirebaseDatabase.getInstance().getReference();
 
         userID = mAuth.getCurrentUser().getUid();
 
         mSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = mEditUsername.getText().toString();
-                String email = mEditEmail.getText().toString();
-                String phoneNumber = mEditPhoneNumber.getText().toString();
+
+                username = mEditUsername.getText().toString();
+                email = mEditEmail.getText().toString();
+                phoneNumber = mEditPhoneNumber.getText().toString();
 
                 Map<String, Object> update = new HashMap<>();
+
                 update.put("Name", username);
                 update.put("Email", email);
                 update.put("PhoneNumber", phoneNumber);
 
-                mref.child("Users").child(userID).updateChildren(update);
 
+
+                mUserRef.child("Users").child(userID).updateChildren(update);
+
+                /*startActivity(new Intent(EditUserActivity.this, UserProfileActivity.class));
+                finish();
+                return;*/
             }
         });
 
     }
+
 }
