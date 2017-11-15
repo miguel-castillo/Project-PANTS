@@ -1,21 +1,16 @@
 package com.mec.pants;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,15 +18,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView mChatRoomListView;
-    private Button mViewUserButton;
-    private TextView textView;
+    private Button mViewUsersButton;
+    private Button mViewProfileButton;
+    private Button mLogoutButton;
 
     private ArrayAdapter<String> arrayAdapter;
     private ArrayList<String> listOfRooms = new ArrayList<String>();
@@ -45,10 +39,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mChatRoomListView = (ListView) findViewById(R.id.addRoomsListView);
-        mViewUserButton = (Button) findViewById(R.id.viewUsersButton);
-        textView = (TextView) findViewById(R.id.text);
+        mViewUsersButton = (Button) findViewById(R.id.viewUsersButton);
+        mViewProfileButton = (Button) findViewById(R.id.viewProfileButton);
+        mLogoutButton = (Button) findViewById(R.id.logoutButton);
 
-        mViewUserButton.setOnClickListener(new View.OnClickListener() {
+        mViewUsersButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, ViewUsersActivity.class));
@@ -56,6 +51,16 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
         });
+
+        mViewUsersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                finish();
+                return;
+            }
+        });
+
 
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfRooms);
         mChatRoomListView.setAdapter(arrayAdapter);
@@ -68,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 name = dataSnapshot.child("Name").getValue().toString();
-                textView.setText(dataSnapshot.child("Location").getValue().toString());
             }
 
             @Override
@@ -109,4 +113,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }
