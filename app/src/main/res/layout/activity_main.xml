@@ -18,23 +18,22 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="43dp"
         android:background="#EFEEEE"
-        tools:ignore="RtlCompat"
         />
 
     <Button
-        android:id="@+id/ViewUsersButton"
+        android:id="@+id/viewUsersButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_toLeftOf="@+id/ViewProfileButton"
-        android:layout_toStartOf="@+id/ViewProfileButton"
+        android:layout_toLeftOf="@+id/viewProfileButton"
+        android:layout_toStartOf="@+id/viewProfileButton"
         android:text="Users" />
 
     <Button
-        android:id="@+id/ViewProfileButton"
+        android:id="@+id/viewProfileButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -43,15 +42,15 @@
         android:text="Profile" />
 
     <Button
-        android:id="@+id/LogoutButton"
+        android:id="@+id/logoutButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:layout_toEndOf="@+id/ViewProfileButton"
-        android:layout_toRightOf="@+id/ViewProfileButton"
+        android:layout_toEndOf="@+id/viewProfileButton"
+        android:layout_toRightOf="@+id/viewProfileButton"
         android:text="Logout" />
 
 </RelativeLayout>

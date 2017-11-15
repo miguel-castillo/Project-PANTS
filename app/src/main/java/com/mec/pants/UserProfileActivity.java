@@ -40,8 +40,8 @@ public class UserProfileActivity extends AppCompatActivity {
         mPhoneNumberText = (TextView) findViewById(R.id.phoneNumberText);
         mImageView = (ImageView) findViewById(R.id.profileImageView);
         mEditProfileButton = (Button) findViewById(R.id.editProfileButton);
-        mViewUsersButton = (Button) findViewById(R.id.vuViewUsersButton);
-        mLogoutButton = (Button) findViewById(R.id.vuLogoutButton);
+        mViewUsersButton = (Button) findViewById(R.id.upViewUsersButton);
+        mLogoutButton = (Button) findViewById(R.id.upLogoutButton);
 
         mViewUsersButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -39,39 +39,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mChatRoomListView = (ListView) findViewById(R.id.addRoomsListView);
-        mViewUsersButton = (Button) findViewById(R.id.vuViewUsersButton);
-        mViewProfileButton = (Button) findViewById(R.id.vuViewProfileButton);
-        mLogoutButton = (Button) findViewById(R.id.vuLogoutButton);
-
-        mViewUsersButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ViewUsersActivity.class));
-                finish();
-                return;
-            }
-        });
-
-        mViewProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
-                finish();
-                return;
-            }
-        });
-
-        mLogoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (view.getId() == R.id.vuLogoutButton) {
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    finish();
-                }
-            }
-        });
-
+        mViewUsersButton = (Button) findViewById(R.id.viewUsersButton);
+        mViewProfileButton = (Button) findViewById(R.id.viewProfileButton);
+        mLogoutButton = (Button) findViewById(R.id.logoutButton);
 
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfRooms);
         mChatRoomListView.setAdapter(arrayAdapter);
@@ -120,6 +90,35 @@ public class MainActivity extends AppCompatActivity {
                 messagesIntent.putExtra("username", name);
                 messagesIntent.putExtra("chatroomName", ((TextView) view).getText().toString());
                 startActivity(messagesIntent);
+            }
+        });
+
+        mViewUsersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ViewUsersActivity.class));
+                finish();
+                return;
+            }
+        });
+
+        mViewProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
+                finish();
+                return;
+            }
+        });
+
+        mLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.getId() == R.id.vuLogoutButton) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    finish();
+                }
             }
         });
 
