@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#3B3A45"
     android:layout_height="match_parent"
     tools:context="com.mec.pants.MainActivity"
     android:weightSum="1">
@@ -12,6 +13,7 @@
         android:id="@+id/addRoomsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#EFEEEE"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -20,29 +22,35 @@
 
     <Button
         android:id="@+id/viewUsersButton"
+        style="@style/buttonMain_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/viewProfileButton"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_toLeftOf="@+id/viewProfileButton"
+        android:layout_toStartOf="@+id/viewProfileButton"
         android:text="Users" />
 
     <Button
         android:id="@+id/viewProfileButton"
+        style="@style/buttonMain_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Profile" />
 
     <Button
         android:id="@+id/logoutButton"
+        style="@style/buttonMain_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/viewProfileButton"
+        android:layout_toRightOf="@+id/viewProfileButton"
         android:text="Logout" />
 
 </RelativeLayout>

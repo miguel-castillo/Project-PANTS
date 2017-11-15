@@ -22,19 +22,25 @@
 
     <EditText
         android:id="@+id/email"
-        android:drawableLeft="@drawable/loginbuts" android:paddingLeft="15dp"
         style="@style/editText_style"
-        android:layout_width="300dp"
-        android:hint="Email" android:paddingRight="50dp" android:textColor="#ffffff"
-        android:inputType="textEmailAddress" />
+        android:layout_width="266dp"
+        android:drawableLeft="@drawable/loginbuts"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="15dp"
+        android:paddingRight="50dp"
+        android:textColor="#ffffff" />
 
     <EditText
         android:id="@+id/password"
-        android:drawableLeft="@drawable/passwordbuts" android:paddingLeft="15dp"
         style="@style/editText_style"
-        android:layout_width="300dp"
-        android:hint="Password" android:paddingRight="50dp" android:textColor="#ffffff"
-        android:inputType="textPassword"/>
+        android:layout_width="268dp"
+        android:drawableLeft="@drawable/passwordbuts"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:paddingRight="50dp"
+        android:textColor="#ffffff" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +60,7 @@
         <Button
             android:id="@+id/register"
             style="@style/buttonText_style"
-            android:layout_width="140dp"
+            android:layout_width="127dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.23"
             android:text="Register" />

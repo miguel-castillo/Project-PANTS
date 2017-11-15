@@ -46,7 +46,6 @@ public class ViewUsersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_users);
 
         mListView = (ListView) findViewById(R.id.usersListView);
-        test = (TextView) findViewById(R.id.sample);
         listofUsers = new ArrayList<>();
         users = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
