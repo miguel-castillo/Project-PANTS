@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mec.pants.UserProfileActivity">
+
+
+    <TextView
+        android:id="@+id/usernameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imageButton"
+        android:layout_alignRight="@+id/imageButton"
+        android:layout_below="@+id/imageButton"
+        android:layout_marginEnd="63dp"
+        android:layout_marginRight="63dp"
+        android:layout_marginTop="40dp"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/usernameText"
+        android:layout_alignStart="@+id/usernameText"
+        android:layout_below="@+id/imageButton"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/phoneNumberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/emailText"
+        android:layout_alignStart="@+id/emailText"
+        android:layout_centerVertical="true"
+        android:text="TextView" />
+
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/usernameText"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:layout_toEndOf="@+id/usernameText"
+        android:layout_toRightOf="@+id/usernameText"
+        app:srcCompat="@drawable/loginbuts" />
+</RelativeLayout>

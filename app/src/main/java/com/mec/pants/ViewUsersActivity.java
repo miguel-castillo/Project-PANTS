@@ -76,22 +76,18 @@ public class ViewUsersActivity extends AppCompatActivity {
                 listofUsers.clear();
                 for (DataSnapshot userID : dataSnapshot.getChildren()){
                     String username = "";
-                    String location = "";
                     for(DataSnapshot value : userID.getChildren()) {
 
                         switch (value.getKey()) {
                             case "Name":
                                 username = value.getValue().toString();
                                 break;
-                            case "Location":
-                                location = value.getValue().toString();
-                                break;
                             default:
                                 break;
                         }
                     }
 
-                    User user = new User(userID.getKey(), username, location);
+                    User user = new User(userID.getKey(), username);
                     listofUsers.add(user);
                 }
                 UserList adapter = new UserList(ViewUsersActivity.this, listofUsers);

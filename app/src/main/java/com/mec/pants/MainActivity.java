@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mViewUsersButton.setOnClickListener(new View.OnClickListener() {
+        mViewProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                startActivity(new Intent(MainActivity.this, UserProfileActivity.class));
                 finish();
                 return;
             }
