@@ -23,6 +23,8 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView mPhoneNumberText;
     private ImageView mImageView;
     private Button mEditProfileButton;
+    private Button mViewUsersButton;
+    private Button mLogoutButton;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
@@ -38,6 +40,28 @@ public class UserProfileActivity extends AppCompatActivity {
         mPhoneNumberText = (TextView) findViewById(R.id.phoneNumberText);
         mImageView = (ImageView) findViewById(R.id.profileImageView);
         mEditProfileButton = (Button) findViewById(R.id.editProfileButton);
+        mViewUsersButton = (Button) findViewById(R.id.vuViewUsersButton);
+        mLogoutButton = (Button) findViewById(R.id.vuLogoutButton);
+
+        mViewUsersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UserProfileActivity.this, ViewUsersActivity.class));
+                finish();
+                return;
+            }
+        });
+
+        mLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.getId() == R.id.vuLogoutButton) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(UserProfileActivity.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        });
 
         mEditProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override

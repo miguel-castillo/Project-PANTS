@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,6 +32,8 @@ public class ViewUsersActivity extends AppCompatActivity {
 
     private ListView mListView;
     private TextView test;
+    private Button mUserProfileButton;
+    private Button mLogoutButton;
 
     private List<User> listofUsers;
 
@@ -49,6 +52,26 @@ public class ViewUsersActivity extends AppCompatActivity {
         listofUsers = new ArrayList<>();
         users = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();
+
+        mUserProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ViewUsersActivity.this, UserProfileActivity.class));
+                finish();
+                return;
+            }
+        });
+
+        mLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.getId() == R.id.vuLogoutButton) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(ViewUsersActivity.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        });
 
         String userId = mAuth.getCurrentUser().getUid();
         users.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {

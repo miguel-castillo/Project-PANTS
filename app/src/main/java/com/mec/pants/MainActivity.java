@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mChatRoomListView = (ListView) findViewById(R.id.addRoomsListView);
-        mViewUsersButton = (Button) findViewById(R.id.viewUsersButton);
-        mViewProfileButton = (Button) findViewById(R.id.viewProfileButton);
-        mLogoutButton = (Button) findViewById(R.id.logoutButton);
+        mViewUsersButton = (Button) findViewById(R.id.vuViewUsersButton);
+        mViewProfileButton = (Button) findViewById(R.id.vuViewProfileButton);
+        mLogoutButton = (Button) findViewById(R.id.vuLogoutButton);
 
         mViewUsersButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (view.getId() == R.id.logoutButton) {
+                if (view.getId() == R.id.vuLogoutButton) {
                     FirebaseAuth.getInstance().signOut();
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                     finish();

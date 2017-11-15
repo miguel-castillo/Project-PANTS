@@ -26,6 +26,7 @@ public class EditUserActivity extends AppCompatActivity {
     private ImageButton mEditProfilePic;
     private Button mSave;
 
+
     private FirebaseAuth mAuth;
     private DatabaseReference mUserRef;
 

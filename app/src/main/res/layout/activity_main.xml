@@ -21,19 +21,19 @@
         tools:ignore="RtlCompat" />
 
     <Button
-        android:id="@+id/viewUsersButton"
+        android:id="@+id/vuViewUsersButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_toLeftOf="@+id/viewProfileButton"
-        android:layout_toStartOf="@+id/viewProfileButton"
+        android:layout_toLeftOf="@+id/vuViewProfileButton"
+        android:layout_toStartOf="@+id/vuViewProfileButton"
         android:text="Users" />
 
     <Button
-        android:id="@+id/viewProfileButton"
+        android:id="@+id/vuViewProfileButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -42,15 +42,15 @@
         android:text="Profile" />
 
     <Button
-        android:id="@+id/logoutButton"
+        android:id="@+id/vuLogoutButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:layout_toEndOf="@+id/viewProfileButton"
-        android:layout_toRightOf="@+id/viewProfileButton"
+        android:layout_toEndOf="@+id/vuViewProfileButton"
+        android:layout_toRightOf="@+id/vuViewProfileButton"
         android:text="Logout" />
 
 </RelativeLayout>
