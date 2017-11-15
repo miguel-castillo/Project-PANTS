@@ -13,27 +13,28 @@
         android:id="@+id/addRoomsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#EFEEEE"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="43dp"
-        tools:ignore="RtlCompat" />
+        android:background="#EFEEEE"
+        tools:ignore="RtlCompat"
+        />
 
     <Button
-        android:id="@+id/vuViewUsersButton"
+        android:id="@+id/ViewUsersButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_toLeftOf="@+id/vuViewProfileButton"
-        android:layout_toStartOf="@+id/vuViewProfileButton"
+        android:layout_toLeftOf="@+id/ViewProfileButton"
+        android:layout_toStartOf="@+id/ViewProfileButton"
         android:text="Users" />
 
     <Button
-        android:id="@+id/vuViewProfileButton"
+        android:id="@+id/ViewProfileButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -42,15 +43,15 @@
         android:text="Profile" />
 
     <Button
-        android:id="@+id/vuLogoutButton"
+        android:id="@+id/LogoutButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:layout_toEndOf="@+id/vuViewProfileButton"
-        android:layout_toRightOf="@+id/vuViewProfileButton"
+        android:layout_toEndOf="@+id/ViewProfileButton"
+        android:layout_toRightOf="@+id/ViewProfileButton"
         android:text="Logout" />
 
 </RelativeLayout>

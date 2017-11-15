@@ -61,19 +61,19 @@
         android:text="Edit Profile" />
 
     <Button
-        android:id="@+id/vuViewUsersButton"
+        android:id="@+id/upViewUsersButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_toLeftOf="@+id/vuViewProfileButton"
-        android:layout_toStartOf="@+id/vuViewProfileButton"
+        android:layout_toLeftOf="@+id/upViewProfileButton"
+        android:layout_toStartOf="@+id/upViewProfileButton"
         android:text="Users" />
 
     <Button
-        android:id="@+id/vuViewProfileButton"
+        android:id="@+id/upViewProfileButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -82,14 +82,14 @@
         android:text="Profile" />
 
     <Button
-        android:id="@+id/vuLogoutButton"
+        android:id="@+id/upLogoutButton"
         style="@style/buttonMain_style"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:layout_toEndOf="@+id/vuViewProfileButton"
-        android:layout_toRightOf="@+id/vuViewProfileButton"
+        android:layout_toEndOf="@+id/upViewProfileButton"
+        android:layout_toRightOf="@+id/upViewProfileButton"
         android:text="Logout" />
 </RelativeLayout>
