@@ -61,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view.getId() == R.id.logoutButton) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    finish();
+                }
+            }
+        });
+
 
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listOfRooms);
         mChatRoomListView.setAdapter(arrayAdapter);
