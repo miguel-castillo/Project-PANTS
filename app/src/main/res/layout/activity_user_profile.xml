@@ -47,4 +47,15 @@
         android:layout_toEndOf="@+id/usernameText"
         android:layout_toRightOf="@+id/usernameText"
         app:srcCompat="@drawable/loginbuts" />
+
+    <Button
+        android:id="@+id/editProfileButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phoneNumberText"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/usernameText"
+        android:layout_toRightOf="@+id/usernameText"
+        android:text="Edit Profile" />
 </RelativeLayout>

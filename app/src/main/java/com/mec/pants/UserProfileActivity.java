@@ -1,8 +1,11 @@
 package com.mec.pants;
 
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +22,7 @@ public class UserProfileActivity extends AppCompatActivity {
     private TextView mEmailText;
     private TextView mPhoneNumberText;
     private ImageView mImageView;
+    private Button mEditProfileButton;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
@@ -33,6 +37,17 @@ public class UserProfileActivity extends AppCompatActivity {
         mEmailText = (TextView) findViewById(R.id.emailText);
         mPhoneNumberText = (TextView) findViewById(R.id.phoneNumberText);
         mImageView = (ImageView) findViewById(R.id.profileImageView);
+        mEditProfileButton = (Button) findViewById(R.id.editProfileButton);
+
+        mEditProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserProfileActivity.this, EditUserActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
         mRef = FirebaseDatabase.getInstance().getReference();
