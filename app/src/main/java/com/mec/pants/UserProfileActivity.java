@@ -86,7 +86,6 @@ public class UserProfileActivity extends AppCompatActivity {
                 String phoneNumber = "";
                 Image profilePic;
                 for (DataSnapshot key : dataSnapshot.getChildren()) {
-
                     switch (key.getKey()){
                         case "Name":
                             name = key.getValue().toString();

@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference mReference = mDatabase.getReference().child("Users").child(userId).child("Conversations");
+        DatabaseReference mReference = mDatabase.getReference().child("Conversations");
         mReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
